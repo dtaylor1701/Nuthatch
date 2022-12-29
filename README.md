@@ -1,3 +1,3 @@
 # Nuthatch
 
-A description of this package.
+Storage utilities.
