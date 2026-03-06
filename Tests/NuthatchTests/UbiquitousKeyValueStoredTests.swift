@@ -1,29 +1,29 @@
-import XCTest
-
+import Testing
 @testable import Nuthatch
 
-final class UbiquitousKeyValueStoredTests: XCTestCase {
-  func testDefaultValue() {
+@Suite("UbiquitousKeyValueStored Tests")
+struct UbiquitousKeyValueStoredTests {
+  @Test func defaultValue() {
     var wrapper = UbiquitousKeyValueStored<Int>("test", defaultValue: 1)
 
     wrapper.wrappedValue = nil
 
-    XCTAssertEqual(1, wrapper.wrappedValue)
+    #expect(wrapper.wrappedValue == 1)
   }
 
-  func testNilDefaultValue() {
+  @Test func nilDefaultValue() {
     var wrapper = UbiquitousKeyValueStored<Int>("test", defaultValue: nil)
 
     wrapper.wrappedValue = nil
 
-    XCTAssertNil(wrapper.wrappedValue)
+    #expect(wrapper.wrappedValue == nil)
   }
 
-  func testArray() {
+  @Test func array() {
     var wrapper = UbiquitousKeyValueStored<[Int]>("test", defaultValue: nil)
 
     wrapper.wrappedValue = [1, 2, 3]
 
-    XCTAssertEqual([1, 2, 3], wrapper.wrappedValue)
+    #expect(wrapper.wrappedValue == [1, 2, 3])
   }
 }
